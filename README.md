@@ -1,24 +1,34 @@
-# PRODIGY_WD_05 - Weather App 🌦️
+# 🌦️ PRODIGY_WD_05 - Weather App
 
-## 🔍 Description
-A web app that displays real-time weather data based on user input using the OpenWeatherMap API.
+## 🔍 Description  
+This is a simple and elegant web app that displays **real-time weather data** based on user input. It uses the **OpenWeatherMap API** to fetch current temperature, weather condition, and other details.
+
+---
 
 ## 🌐 Technologies Used
-- HTML
-- CSS
-- JavaScript
-- OpenWeatherMap API
+- HTML  
+- CSS  
+- JavaScript  
+- OpenWeatherMap API  
+
+---
 
 ## ✅ Features
-- User can search any city
-- Shows temperature, condition, icon
-- Displays humidity and wind speed
+- 🔍 User can search weather for any city  
+- 🌡️ Displays temperature, condition, and custom weather icons  
+- 💧 Shows humidity and 🌬️ wind speed (optional to extend)  
+- 💬 Motivational or safety quote based on current condition  
+- 🌗 Light/Dark theme toggle
 
-## 📸 Screenshot
-(Add your screenshot here)
 
-## 🔗 Live Demo
-(If hosted on GitHub Pages)
+## 👨‍💻 Author  
+**Bhargav Reddy**  
+🔗 [LinkedIn](https://www.linkedin.com/in/d-bhargav-reddy-0412-)  
+💻 [GitHub](https://github.com/bhargav31767)
 
-## 📌 Author
-Bhargav Reddy
+---
+
+## 🔑 API Key  
+You can get your free OpenWeatherMap API key from:  
+👉 https://home.openweathermap.org/api_keys  
+Use the `API_KEY` in your JavaScript file.
