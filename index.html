@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Weather App</h1>
+    <input type="text" id="city-input" placeholder="Enter City Name...">
+    <button onclick="getWeather()">Get Weather</button>
+    <div class="weather-card">
+      <h2 id="location">--</h2>
+      <img id="weather-icon" src="./icons/sunny.png" alt="Weather Icon" width="100" />
+      <p id="temperature">-- °C</p>
+      <p id="condition">--</p>
+      <p id="quote">Stay prepared, stay safe! ☁️</p>
+    </div>
+    <button id="toggle-theme">Toggle Theme</button>
+  </div>
+
+  <script>
+    const API_KEY = "de766273992559645250885c8c2b3577";
+
+    const weatherIcons = {
+      Clear: "sunny.png",
+      Clouds: "cloudy.png",
+      Rain: "rainy.png",
+      Drizzle: "rainy.png",
+      Thunderstorm: "rainy.png",
+      Snow: "snow.png",
+      Mist: "cloudy.png",
+      Smoke: "cloudy.png",
+      Haze: "cloudy.png",
+      Dust: "cloudy.png",
+      Fog: "cloudy.png",
+      Sand: "cloudy.png",
+      Ash: "cloudy.png",
+      Squall: "cloudy.png",
+      Tornado: "cloudy.png",
+    };
+
+    const weatherQuotes = {
+      Clear: "Enjoy the sunshine! ☀️",
+      Clouds: "It's a bit cloudy today. ☁️",
+      Rain: "Don't forget your umbrella! ☔",
+      Thunderstorm: "Stay indoors and stay safe. ⛈️",
+      Snow: "Perfect day for snowball fights! ❄️",
+      Mist: "Drive carefully in the mist. 🌫️",
+      Haze: "Take care if you have allergies. 🌁",
+    };
+
+    function getWeather() {
+      const city = document.getElementById("city-input").value;
+      if (!city) {
+        alert("Please enter a city name");
+        return;
+      }
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      )
+        .then((response) => {
+          if (!response.ok) throw new Error("City not found");
+          return response.json();
+        })
+        .then((data) => {
+          const temp = data.main.temp;
+          const condition = data.weather[0].main;
+          const icon = weatherIcons[condition] || "sunny.png";
+          const quote = weatherQuotes[condition] || "Stay prepared, stay safe!";
+
+          document.getElementById("location").innerText = data.name;
+          document.getElementById("temperature").innerText = `${temp} °C`;
+          document.getElementById("condition").innerText = condition;
+          document.getElementById("weather-icon").src = `./icons/${icon}`;
+          document.getElementById("quote").innerText = quote;
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    }
+
+    document.getElementById("toggle-theme").addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+    });
+  </script>
+</body>
+</html>
